@@ -1,59 +1,56 @@
-# React Components Basics Lab
+# Organizing Code with Import/Export Lab
 
 ## Learning Goals
 
-- Write basic React components
-- Return one React component from another component
+- Use the default and named import/export syntax to access variables across
+  multiple files
 
 ## Instructions
 
-In the labs throughout this section, we'll be working on building a small
-portfolio site in React.
+In this lab, we'll work on organizing our code into separate files with the
+import/export syntax. We'll continue working on the portfolio example from the
+previous lab, this time working on separating out our code into different
+modules using the `import`/`export` syntax.
 
-Our goal for the first lesson is to get the basic components for our app — the
-`<Navbar>`, `<Home>`, and `<About>` components — to be returned from the `<App>`
-component.
+Begin with `npm install`. Then, run `npm start` to run your code in the browser.
+Follow the error messages to fix the broken imports!
 
-Once we're done, we should get something like this:
+Your goal is to fix the errors, and get our app to match this example:
 
-![app demo](https://curriculum-content.s3.amazonaws.com/react/demo.png)
+![demo](https://curriculum-content.s3.amazonaws.com/phase-2/phase-2-hooks-import-export-lab/demo.png)
 
-For this lab, we will be rendering a few children components in our top-most
-component: `App`. All of our work will be done in `src/components/App.js`. The
-rest of the files shouldn't need any changes.
-
-To set up the app and run it in the browser, run:
-
-```console
-$ npm install
-$ npm start
-```
-
-To start, work on getting the app to match the screenshot above. Then, open up a
-second terminal (open to the same directory), and run `learn test` or `npm test`
-to check your work.
+When you're done, run `learn test` or `npm test` to check if all tests pass.
 
 ## Deliverables
 
-- Two components, `<Navbar>` and `<Home>`, are already defined in the `App.js`
-  file. Add both of these components as _child_ components of `<App>` by
-  including them in the return statement for the `App` function.
+### Components
 
-- Create a third component, `<About>`. The `<About>` component should also be a
-  _child_ component of `<App>`.
+There are four components in this application, all located in the `components`
+folder. Use the **default export** syntax to export the `<About>`, `<Home>`,
+and `<NavBar>` components, and import them all in the `<App>` component.
 
-  - The `<About>` component should return a `<div>` with an id of `about`. To
-    match the screenshot, the div should contain an `<h2>` element with the text
-    "About." However, as long as it has an id of `about`, it will pass the test!
+### Data
 
-**Hint**: If you're stuck, try using the `screen.debug` method in the test file
-to see what DOM elements are being returned by your `<App>` component. If you
-still need help, this lab (and others) have a [solution branch][] on GitHub
-where you can see one possible solution to this lesson.
+In the `src/data/user.js` file, there are three variables that have information
+about the owner of the portfolio site. Export all three variables using the
+**named export** syntax.
+
+After you've exported them, import them in the following files:
+
+- Import the `username` and `city` variables in the `src/components/Home.js`
+  file
+- Import the `image` variable in the `src/components/About.js` file
+
+When importing, make sure to use the _relative path_ from the file you're
+currently in, to the file you're trying to import from. For example, if you are
+in the `src/components/About.js` file and want to import from the
+`src/data/user.js` file, the relative path is `../data/user` (go up one
+directory, into the `data` folder, and into the `user` file).
 
 ## Resources
 
-- [React Components](https://reactjs.org/docs/components-and-props.html)
+- [MDN Import Documentation][import]
+- [MDN Export Documentation][export]
 
-[solution branch]:
-  https://github.com/learn-co-curriculum/react-hooks-running-tests/tree/solution
+[import]: https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/import
+[export]: https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export
